@@ -69,6 +69,12 @@ class LoginForm extends Component {
                 {
                   errors.length > 0 && <AlertValidate errors={errors} />
                 }
+                {
+                  this.props.redux.register_success && (
+                          <Segment inverted color='green'>
+                            Registrasi berhasil!, silakan login!
+                          </Segment>)
+                }
                 <Form size='large' onSubmit={this.handleSubmit}>
                   <Segment stacked>
                     <TextInput
@@ -106,7 +112,7 @@ class LoginForm extends Component {
 
 const mapStateToProps = (state) => {
     return {
-      token : state.token
+      redux : state
     }
 }
 

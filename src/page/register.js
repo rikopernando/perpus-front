@@ -3,6 +3,8 @@ import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
 import { Link, Redirect } from 'react-router-dom'
 import TextInput from '../components/TextInputt'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { setRegisterSuccess } from '../store/actions'
 import AlertValidate from '../components/AlertValidate'
 import axios from '../axios'
 
@@ -27,6 +29,7 @@ class RegisterForm extends Component {
       const { email, name, password, confirm_password } = this.state
         axios.post('users/register',{ email, name, password, confirm_password })
          .then((resp) => {
+          this.props.setRegisterSuccess(true)
           this.props.history.push('/login')
          })
          .catch((err) => {
@@ -111,5 +114,8 @@ const mapStateToProps = (state) => {
       token : state.token
     }
 }
-export default connect(mapStateToProps)(RegisterForm)
+
+const mapDispatchToProps = (dispatch) => bindActionCreators({setRegisterSuccess}, dispatch)
+
+export default connect(mapStateToProps,mapDispatchToProps)(RegisterForm)
 

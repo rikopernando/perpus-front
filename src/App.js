@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
 import { Container } from 'semantic-ui-react'
 import Navbar from './components/navbar'
 import Welcome from './page/welcome'
@@ -7,6 +7,24 @@ import Login from './page/login'
 import Logout from './page/logout'
 import Register from './page/register'
 import Home from './page/home'
+
+const PrivateRoute = ({ component: Component, ...rest }) => (
+  <Route
+    {...rest}
+    render={props =>
+       localStorage.token ? (
+        <Component {...props} />
+      ) : (
+        <Redirect
+          to={{
+            pathname: "/login",
+            state: { from: props.location }
+          }}
+        />
+      )
+    }
+  />
+)
 
 class App extends Component {
   render() {
@@ -18,7 +36,7 @@ class App extends Component {
                   <Route exact path="/login" component={Login} />
                   <Route exact path="/logout" component={Logout} />
                   <Route exact path="/register" component={Register} />
-                  <Route exact path="/home" component={Home} />
+                  <PrivateRoute exact path="/home" component={Home} />
 							</Container>
 				</div>
     )
