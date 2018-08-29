@@ -1,46 +1,39 @@
 import React, { Component } from 'react'
-import { Menu } from 'semantic-ui-react'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+
 
 class Navbar extends Component {
-  constructor(){
-    super()
-    this.state = {
-      activeItem : 'home'
-    }
-  }
-
-  handleItemClick = (e, {name}) => this.setState({ activeItem : name })
 
   render() {
-		const { activeItem } = this.state
+    const token = localStorage.token
     return (
-      <Menu>
-        <Menu.Item 
-          name='home' 
-          active={activeItem === 'home'} 
-          onClick={this.handleItemClick} 
-        >
-          Perpus Js App
-        </Menu.Item>
-        <Menu.Menu position='right'>
-          <Menu.Item
-            name='login'
-            active={activeItem === 'login'}
-            onClick={this.handleItemClick}
-          >
-            Login 
-          </Menu.Item>
-          <Menu.Item
-            name='register'
-            active={activeItem === 'register'}
-            onClick={this.handleItemClick}
-          >
-             Register
-          </Menu.Item>
-        </Menu.Menu>
-      </Menu>
+      <div className="ui menu">
+          <Link to="/" className="active item"> Perpus Js App </Link>
+            {
+                token ? 
+                 (
+                  <div className="right menu">
+                    <Link to="logout" className="item"> Logout </Link>
+                  </div>
+                  )
+                 :
+                 (
+                  <div className="right menu">
+                    <Link to="login" className="item"> Login </Link>
+                    <Link to="register" className="item"> Register </Link>
+                  </div>
+                 )
+            }
+      </div>
     )
   }
 }
 
-export default Navbar 
+const mapStateToProps = (state) => {
+    return {
+      redux : state
+    }
+}
+
+export default connect(mapStateToProps)(Navbar)
