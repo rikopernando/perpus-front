@@ -40,6 +40,7 @@ class LoginForm extends Component {
       const { email, password } = this.state
         axios.post('users/login',{ email, password })
          .then((resp) => {
+          console.log(resp.data)
           localStorage.setItem("token", resp.data.data.token)
           localStorage.setItem("role", resp.data.data.role)
           this.props.setToken(resp.data.data.token)

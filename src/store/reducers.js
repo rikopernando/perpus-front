@@ -1,8 +1,13 @@
-import { SET_TOKEN, SET_REGISTER_SUCCESS } from './actionTypes'
+import { 
+    SET_TOKEN,
+    SET_REGISTER_SUCCESS,
+    SET_AUTHOR
+} from './actionTypes'
 
 const initialState = {
    token : '',
-   register_success : false
+   register_success : false,
+   author : []
 }
 
 const reducers = (state = initialState, action) => {
@@ -17,6 +22,13 @@ const reducers = (state = initialState, action) => {
       return{
         ...state,
         register_success: action.payload
+      }
+    }
+
+    if(action.type === SET_AUTHOR){
+      return{
+        ...state,
+        author: action.payload
       }
     }
     return state

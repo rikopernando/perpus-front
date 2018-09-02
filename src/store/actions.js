@@ -1,4 +1,8 @@
-import { SET_TOKEN, SET_REGISTER_SUCCESS } from './actionTypes'
+import { 
+    SET_TOKEN,
+    SET_REGISTER_SUCCESS,
+    SET_AUTHOR 
+} from './actionTypes'
 
 export const setToken = (data) => {
     return {
@@ -10,6 +14,13 @@ export const setToken = (data) => {
 export const setRegisterSuccess = (data) => {
     return {
       type: SET_REGISTER_SUCCESS,
+      payload: data
+    }
+}
+
+export const setAuthor = (data) => {
+    return {
+      type: SET_AUTHOR,
       payload: data
     }
 }

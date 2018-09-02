@@ -8,8 +8,10 @@ class Navbar extends Component {
   render() {
     const token = localStorage.token
     return (
-      <div className="ui menu">
+      <div className="ui pointing menu">
           <Link to="/" className="active item"> Perpus Js App </Link>
+          <Link to="/" className="item"> Dashboard </Link>
+          <Link to="/author" className="item"> Penulis </Link>
             {
                 token ? 
                  (
