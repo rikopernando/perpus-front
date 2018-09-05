@@ -1,3 +1,5 @@
 export const SET_TOKEN = 'SET_TOKEN'
 export const SET_REGISTER_SUCCESS = 'SET_REGISTER_SUCCESS'
 export const SET_AUTHOR = 'SET_AUTHOR'
+export const SET_PAGINATION = 'SET_PAGINATION'
+export const SET_LOADING = 'SET_LOADING'

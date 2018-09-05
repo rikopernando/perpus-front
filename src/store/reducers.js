@@ -1,13 +1,17 @@
 import { 
     SET_TOKEN,
     SET_REGISTER_SUCCESS,
-    SET_AUTHOR
+    SET_AUTHOR,
+    SET_PAGINATION,
+    SET_LOADING
 } from './actionTypes'
 
 const initialState = {
    token : '',
    register_success : false,
-   author : []
+   author : [],
+   pagination : {},
+   loading : true
 }
 
 const reducers = (state = initialState, action) => {
@@ -29,6 +33,20 @@ const reducers = (state = initialState, action) => {
       return{
         ...state,
         author: action.payload
+      }
+    }
+
+    if(action.type === SET_PAGINATION){
+      return{
+        ...state,
+        pagination: action.payload
+      }
+    }
+
+    if(action.type === SET_LOADING){
+      return{
+        ...state,
+        loading: action.payload
       }
     }
     return state

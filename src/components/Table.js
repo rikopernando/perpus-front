@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Table } from 'semantic-ui-react'
+import { Table, Header } from 'semantic-ui-react'
 
 const TableApp = (props) => {
     const { thead , redux } = props
@@ -18,23 +18,37 @@ const TableApp = (props) => {
           </Table.Row>
         </Table.Header>
 
-        <Table.Body>
-          {
-            redux.author.map((data,index) => {
-              return(
-                <Table.Row key={index}>
-                     {
-                        Object.keys(data).map((value,index) => {
-                           return (
-                             <Table.Cell key={index}>{data[value]}</Table.Cell>
-                           )
-                        })
-                     }
-                </Table.Row>
-              )
-            })
-          }
-        </Table.Body>
+        {
+          redux.author.length ? (
+            <Table.Body>
+              {
+                redux.author.map((data,index) => {
+                  return(
+                    <Table.Row key={index}>
+                         {
+                            Object.keys(data).map((value,index) => {
+                               return (
+                                 <Table.Cell key={index}>{data[value]}</Table.Cell>
+                               )
+                            })
+                         }
+                    </Table.Row>
+                  )
+                })
+              }
+            </Table.Body>
+          ) : (
+            <Table.Body>
+              <Table.Row>
+                <Table.Cell rowSpan='2'>
+										<Header as='h3' textAlign='right'>
+											Data Kosong
+										</Header>
+                </Table.Cell>
+              </Table.Row>
+            </Table.Body>
+          )
+        }
       </Table>
        )
 }
