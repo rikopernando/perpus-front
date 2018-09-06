@@ -43,7 +43,7 @@ class Author extends Component {
     const { name, errors } = this.state
     return(
 			<div>
-          <Breadcrumb active="create_author"/>
+          <Breadcrumb second="Penulis" third="Tambah Penulis" toSecond="/author" toThird="/author/create" active="0"/>
           <Segment>
             <Grid>
               <Grid.Column width={2}></Grid.Column>

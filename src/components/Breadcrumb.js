@@ -4,36 +4,25 @@ import { Segment } from 'semantic-ui-react'
 
 
 const Breadcrumb = (props) => {
-  const { active } = props
+  const { second, third, toSecond, toThird, active } = props
   return(
 			<Segment>
           <div className="ui breadcrumb">
-           {
-              active === "dashboard" ? (
-                  <Link to="/" className="active section"> Dashboard </Link>
-              )
-              : (
-                  <Link to="/" className="section"> Dashboard </Link>
-              )
-           }
+            <Link to="/" className="section"> Dashboard </Link>
               <i aria-hidden="true" className="right angle icon divider"></i>
-           {
-              active === "author" ? (
-                  <Link to="/author" className="active section"> Penulis </Link>
+            {
+              active === '1' ? (
+                 <Link to={toSecond} className="active section"> {second} </Link>
+              ) : (
+                 <Link to={toSecond} className="section"> {second} </Link>
               )
-              : (
-                  <Link to="/author" className="section"> Penulis </Link>
-              )
-           }
+            }
               <i aria-hidden="true" className="right angle icon divider"></i>
-           {
-              active === "create_author" ? (
-                  <Link to="/author/create" className="active section"> Tambah Penulis </Link>
+            {
+              third && (
+                <Link to={toThird} className="active section"> {third} </Link>
               )
-              : (
-                  <Link to="/author/create" className="section"> Tambah Penulis </Link>
-              )
-           }
+            }
           </div>
 			</Segment>
     )

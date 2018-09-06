@@ -53,9 +53,10 @@ class Author extends Component {
 
   render(){
     const { name, errors } = this.state
+    const toThird = "/author/edit/"+this.props.match.params.id
     return(
 			<div>
-          <Breadcrumb active="create_author"/>
+          <Breadcrumb second="Penulis" third="Edit Penulis" toSecond="/author" toThird={toThird} active="0"/>
           <Segment>
             <Grid>
               <Grid.Column width={2}></Grid.Column>

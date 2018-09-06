@@ -51,7 +51,7 @@ class Author extends Component {
     const { thead, searchText } = this.state
     return(
 			<div>
-          <Breadcrumb active="author"/>
+          <Breadcrumb second="Penulis" third="" toSecond="/author" toThird="" active="1"/>
           <Segment>
           {
             this.props.redux.message_success.status && (
