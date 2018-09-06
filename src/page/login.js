@@ -23,19 +23,6 @@ class LoginForm extends Component {
       this.setState({[e.target.name]: e.target.value})
     }
 
-    validate = () => {
-      const { email, password } = this.state
-      let errors = []
-      !email && errors.push('Username is required!')
-      !password && errors.push('Password is required!')
-      this.setState({ errors : errors }) 
-      //this.state.errors.length > 0 ? true : false
-      if(this.state.errors.length > 0)
-          return false
-      else
-          return true
-    }
-
     handleSubmit = (event) => {
       const { email, password } = this.state
         axios.post('users/login',{ email, password })

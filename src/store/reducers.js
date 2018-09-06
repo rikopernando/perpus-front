@@ -3,7 +3,8 @@ import {
     SET_REGISTER_SUCCESS,
     SET_AUTHOR,
     SET_PAGINATION,
-    SET_LOADING
+    SET_LOADING,
+    SET_SUCCESS
 } from './actionTypes'
 
 const initialState = {
@@ -11,7 +12,11 @@ const initialState = {
    register_success : false,
    author : [],
    pagination : {},
-   loading : true
+   loading : true,
+   message_success : {
+      status : false,
+      message : ''
+   }
 }
 
 const reducers = (state = initialState, action) => {
@@ -47,6 +52,13 @@ const reducers = (state = initialState, action) => {
       return{
         ...state,
         loading: action.payload
+      }
+    }
+
+    if(action.type === SET_SUCCESS){
+      return{
+        ...state,
+        message_success: action.payload
       }
     }
     return state

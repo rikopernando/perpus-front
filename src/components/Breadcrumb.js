@@ -25,6 +25,15 @@ const Breadcrumb = (props) => {
                   <Link to="/author" className="section"> Penulis </Link>
               )
            }
+              <i aria-hidden="true" className="right angle icon divider"></i>
+           {
+              active === "create_author" ? (
+                  <Link to="/author/create" className="active section"> Tambah Penulis </Link>
+              )
+              : (
+                  <Link to="/author/create" className="section"> Tambah Penulis </Link>
+              )
+           }
           </div>
 			</Segment>
     )

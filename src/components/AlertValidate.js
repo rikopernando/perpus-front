@@ -1,10 +1,11 @@
 import React from 'react'
-import { List, Segment } from 'semantic-ui-react'
+import { List, Message } from 'semantic-ui-react'
 
 const AlertValidate = (props) => {
     const { errors } = props
       return(
-          <Segment inverted color='red'>
+          <Message negative>
+              <Message.Header>Maaf, sepertinya ada kesalahan dalam pengisian data, silakan dicek lagi formnya!</Message.Header>
               <List bulleted>
                 {
                   errors.map((errors,index) => {
@@ -12,7 +13,7 @@ const AlertValidate = (props) => {
                   })
                 }
               </List>
-          </Segment>
+          </Message>
           )
 }
 

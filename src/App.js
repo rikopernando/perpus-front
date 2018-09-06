@@ -7,7 +7,9 @@ import Login from './page/login'
 import Logout from './page/logout'
 import Register from './page/register'
 import Home from './page/home'
-import Author from './page/author'
+import AuthorIndex from './page/author'
+import AuthorCreate from './page/author/create'
+import AuthorEdit from './page/author/edit'
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -38,7 +40,9 @@ class App extends Component {
                   <Route exact path="/logout" component={Logout} />
                   <Route exact path="/register" component={Register} />
                   <PrivateRoute exact path="/home" component={Home} />
-                  <PrivateRoute exact path="/author" component={Author} />
+                  <PrivateRoute exact path="/author" component={AuthorIndex} />
+                  <PrivateRoute exact path="/author/create" component={AuthorCreate} />
+                  <PrivateRoute exact path="/author/edit/:id" component={AuthorEdit} />
 							</Container>
 				</div>
     )
