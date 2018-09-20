@@ -10,6 +10,8 @@ import Home from './page/home'
 import AuthorIndex from './page/author'
 import AuthorCreate from './page/author/create'
 import AuthorEdit from './page/author/edit'
+import BookIndex from './page/book'
+import BookCreate from './page/book/create'
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -43,6 +45,8 @@ class App extends Component {
                   <PrivateRoute exact path="/author" component={AuthorIndex} />
                   <PrivateRoute exact path="/author/create" component={AuthorCreate} />
                   <PrivateRoute exact path="/author/edit/:id" component={AuthorEdit} />
+                  <PrivateRoute exact path="/book" component={BookIndex} />
+                  <PrivateRoute exact path="/book/create" component={BookCreate} />
 							</Container>
 				</div>
     )

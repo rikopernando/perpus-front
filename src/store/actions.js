@@ -5,7 +5,8 @@ import {
     SET_AUTHOR,
     SET_PAGINATION,
     SET_LOADING,
-    SET_SUCCESS
+    SET_SUCCESS,
+    SET_BOOK
 } from './actionTypes'
 
 export const setToken = (data) => {
@@ -82,3 +83,44 @@ export const setSuccess = (data) => {
       payload: data
     }
 }
+
+export const setBook = (page, query) => {
+    
+    const token = localStorage.token
+
+    return dispatch => {
+
+        if(query) {
+            axios.get(`book/search?query=${query}&page=${page}`,{headers : { token }})
+            .then((resp) => {
+              dispatch({
+               type: SET_BOOK,
+               payload: resp.data.data
+              })
+              dispatch({
+               type: SET_PAGINATION,
+               payload: resp.data.paginate
+              })
+            })
+            .catch((err) => {
+              console.log(err)
+            })
+        }else{
+            axios.get('book?page='+page,{ headers : { token }}).then((resp) => {
+              dispatch({
+               type: SET_BOOK,
+               payload: resp.data.data
+              })
+              dispatch({
+               type: SET_PAGINATION,
+               payload: resp.data.paginate
+              })
+            })
+            .catch((err) => {
+              console.log(err)
+            })
+        }
+
+    }
+}
+

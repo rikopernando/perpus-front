@@ -9,22 +9,22 @@ class TableApp extends Component {
       super()
       this.state = {
         open : false,
-        dataOnDelete : {} 
+        id : '' 
       }
     }
 
-    show = data => () => this.setState({ open: true, dataOnDelete : data })
+    show = id => () => this.setState({ open: true, id : id })
 
     close = () => this.setState({ open: false })
 
-    onDelete = (data) => {
-     this.props.handleDelete(data)
+    onDelete = (id) => {
+     this.props.handleDelete(id)
      this.setState({ open: false })
     }
 
     render(){
-        const { thead, editUrl, redux } = this.props
-        const { open, dataOnDelete } = this.state
+        const { tbody, thead, editUrl } = this.props
+        const { open, id } = this.state
         return (
           <div style={{ marginTop : 10, marginBottom : 10 }}>
               <Table sortable celled fixed>
@@ -42,10 +42,10 @@ class TableApp extends Component {
                 </Table.Header>
 
                 {
-                  redux.author.length ? (
+                  tbody.length ? (
                     <Table.Body>
                       {
-                        redux.author.map((data,index) => {
+                        tbody.map((data,index) => {
                           return(
                             <Table.Row key={index}>
                                  {
@@ -59,7 +59,7 @@ class TableApp extends Component {
                                   <Link to={editUrl+data.id} className="ui primary button" role="button"> Edit </Link>
                               </Table.Cell>
                               <Table.Cell>
-                                  <Button onClick={this.show(data)} color='red'>Hapus</Button>
+                                  <Button onClick={this.show(data.id)} color='red'>Hapus</Button>
                               </Table.Cell>
                             </Table.Row>
                           )
@@ -82,15 +82,15 @@ class TableApp extends Component {
               <Modal size='mini' open={open} onClose={this.close}>
                 <Modal.Header>Konfirmasi Hapus Data</Modal.Header>
                 <Modal.Content>
-                  <p>Yakin akan menghapus <b> { dataOnDelete.name } </b> ?</p>
+                  <p>Yakin akan menghapus data ini ? </p>
                 </Modal.Content>
                 <Modal.Actions>
-                  <Button negative onClick={ this.close}>Tidak</Button>
+                  <Button negative onClick={ this.close }>Tidak</Button>
                   <Button positive 
                       icon='checkmark'
                       labelPosition='right'
                       content='Ya'
-                      onClick={ () => this.onDelete(dataOnDelete)} />
+                      onClick={ () => this.onDelete(id)} />
                 </Modal.Actions>
               </Modal>
             </div>

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from '../../axios'
 import Breadcrumb from '../../components/Breadcrumb'
 import { Segment, Grid, Form, Button } from 'semantic-ui-react'
-import TextInput from '../../components/TextInput'
+import TextInput from '../../components/TextAuth'
 import AlertValidate from '../../components/AlertValidate'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -66,10 +66,10 @@ class Author extends Component {
                 }
                 <Form size='large' onSubmit={this.handleSubmit}>
                     <TextInput
-                      id="name"
                       name="name"
+                      icon='user'
+                      iconPosition='left'
                       placeholder='Nama'
-                      label='Nama'
                       type="text"
                       value={name}
                       handleChange={this.handleChange}

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
 import { Link, Redirect } from 'react-router-dom'
-import TextInput from '../components/TextInputt'
+import TextInput from '../components/TextAuth'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { setRegisterSuccess } from '../store/actions'

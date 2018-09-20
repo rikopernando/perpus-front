@@ -4,13 +4,15 @@ import {
     SET_AUTHOR,
     SET_PAGINATION,
     SET_LOADING,
-    SET_SUCCESS
+    SET_SUCCESS,
+    SET_BOOK
 } from './actionTypes'
 
 const initialState = {
    token : '',
    register_success : false,
    author : [],
+   book : [],
    pagination : {},
    loading : true,
    message_success : {
@@ -59,6 +61,13 @@ const reducers = (state = initialState, action) => {
       return{
         ...state,
         message_success: action.payload
+      }
+    }
+
+    if(action.type === SET_BOOK){
+      return{
+        ...state,
+        book: action.payload
       }
     }
     return state

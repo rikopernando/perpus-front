@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from '../../axios'
 import Breadcrumb from '../../components/Breadcrumb'
 import { Segment, Grid, Form, Button } from 'semantic-ui-react'
-import TextInput from '../../components/TextInputt'
+import TextInput from '../../components/TextInput'
 import AlertValidate from '../../components/AlertValidate'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -25,7 +25,7 @@ class Author extends Component {
     const token = localStorage.token
     const { name } = this.state
     axios.post('author/create',{name},{headers : {token}}).then((resp) => {
-      const success = { status : true, message : 'Berhasil Tambah Penulis' }
+      const success = { status : true, message : 'Berhasil Menambah Penulis' }
       this.props.setSuccess(success)
       this.props.history.push('/author')
     })
@@ -53,10 +53,10 @@ class Author extends Component {
                 }
                 <Form size='large' onSubmit={this.handleSubmit}>
                     <TextInput
+                      id="name"
                       name="name"
-                      icon='user'
-                      iconPosition='left'
                       placeholder='Nama'
+                      label='Nama'
                       type="text"
                       value={name}
                       handleChange={this.handleChange}
